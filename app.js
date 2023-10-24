@@ -44,8 +44,8 @@ app.post("/add", (req, res) => {
 
 // UPDATE
 app.post("/add-old/:id", (req, res) => {
-    User.updateOne(req.body)
-        .then((result) => {
+    User.findByIdAndUpdate(req.params.id, { type, name, quest, ans1, ans2, ans3, ans4, ans5, number } = req.body, { new: true })
+        .then((updatedUser) => {
             res.redirect(`/${req.body.type}`);
         })
 });
